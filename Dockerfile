@@ -17,10 +17,10 @@ WORKDIR /
 COPY . /go/src/github.com/Snails8/go-api
 
 RUN apk update && apk add --no-cache git
-RUN cd /go/src/github.com/Snails8/go-api/api && go build -o bin/sample main.go
+RUN cd /go/src/github.com/Snails8/go-api/src/api && go build -o bin/sample main.go
 
 FROM alpine:3.8
 
-COPY --from=build /go/src/github.com/Snails8/go-api/api/bin/sample /usr/local/bin/
+COPY --from=build /go/src/github.com/Snails8/go-api/src/api/bin/sample /usr/local/bin/
 
 CMD ["sample"]
