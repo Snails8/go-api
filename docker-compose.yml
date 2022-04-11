@@ -1,9 +1,30 @@
 version: "3"
+
 services:
-  app: # サービス名
-    build: # ビルドに使うDockerファイルのパス
+  app:
+    build:
       context: .
-      dockerfile: ./build/Dockerfile
-    tty: true # コンテナの永続化
+      dockerfile: Dockerfile
+    container_name: go-api
     volumes:
       - ./cmd:/go/src/app # マウントディレクトリ
+    tty: true # コンテナの永続化
+    restart: always
+    depends_on:
+      - db
+  db:
+    image: postgres:13.2
+    environment:
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    ports:
+      - 5433:5432
+    volumes:
+      - "db:/var/lib/postgresql/data"
+      - "./src/tools/seeds:/seeds"
+    command: >
+      -c
+        log_statement=all  
+
+volumes:
+  db: {}
