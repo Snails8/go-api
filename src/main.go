@@ -1,12 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"go-api/pkg"
+)
 
 func main() {
-	fmt.Println("step1")
-	defer fmt.Println("step2")
-	defer fmt.Println("step3")
-	fmt.Println("step4")
-
-	defer fmt.Println("step5")
+	pkg.PrintDefer()
 }

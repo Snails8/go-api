@@ -2,7 +2,7 @@ package pkg
 
 import "fmt"
 
-func main() {
+func PrintDefer() {
 	fmt.Println("step1")
 	defer fmt.Println("step2")
 	defer fmt.Println("step3")
