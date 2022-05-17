@@ -1,0 +1,1 @@
+{"buildTargets":["app","destroy","down","restart","stop","up"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
