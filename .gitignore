@@ -3,3 +3,5 @@
 /.docker/Dockerfile
 /docker-compose.yaml
 Dockerfile
+
+.env
