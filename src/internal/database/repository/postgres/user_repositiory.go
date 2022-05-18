@@ -14,6 +14,11 @@ type databaseRepository struct {
 	logger *middleware.Logger
 }
 
+// handler などNewする際に使用
+func NewDatabaseRepository(dpbool *pgxpool.Pool, logger *middleware.Logger) domain.Repository {
+	return &NewDatabaseRepository{dpbool, logger}
+}
+
 func (r *databaseRepository) GetUsers() []domain.User {
 	query :=`
 		SELECT users.id, users.name FROM users ORDER BY id 
