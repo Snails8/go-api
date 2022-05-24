@@ -1,0 +1,28 @@
+swagger: '3.0'
+host: _ENDPOINTS_HOST
+basePath: /api/test
+schema:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+x-google-backend:
+  address: https://_API_HOST
+  protocol: h2
+  deadline: 60.0
+paths:
+  /users:
+    get:
+      summary: ユーザー一覧
+      operationId: getUsers
+      responses:
+        '200':
+          description: ユーザー一覧
+          schema:
+            $ref: '#/definitions/users/GetUsersResponse'
+definitions:
+  GetUsersResponse:
+    $ref: './definitions/users/GetUsersResponse.yaml'
+  User:
+    $ref: './definitions/users/User.yaml'
