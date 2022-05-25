@@ -11,22 +11,24 @@ import (
 
 type databaseRepository struct {
 	dbpool *pgxpool.Pool
-	logger *middleware.Logger
 }
 
 // handler などNewする際に使用
-func NewDatabaseRepository(dpbool *pgxpool.Pool, logger *middleware.Logger) domain.Repository {
-	return &NewDatabaseRepository{dpbool, logger}
+func NewDatabaseRepository(dbpool *pgxpool.Pool,) domain.Repository {
+	return &databaseRepository{
+		dbpool: dbpool,
+	}
 }
 
-func (r *databaseRepository) GetUsers() []domain.User {
+func (r *databaseRepository) GetUsers(ctx context.Context, logger *middleware.Logger) []domain.User {
 	query :=`
 		SELECT users.id, users.name FROM users ORDER BY id 
 	`
 
 	rows, err := r.dbpool.Query(context.Background(), query)
 	if err != nil {
-		r.logger.Error.Println("query err:" + err)
+		logger.Error.Printf("could not query: %v\n", err)
+		return []domain.User{}
 	}
 
 	defer rows.Close()
@@ -40,7 +42,8 @@ func (r *databaseRepository) GetUsers() []domain.User {
 			&user.Name,
 		)
 		if err != nil {
-			r.logger.Error.Println("Scan err:" + err)
+			logger.Error.Printf("could not query: %v\n", err)
+			return []domain.User{}
 		}
 
 		users = append(users, user)

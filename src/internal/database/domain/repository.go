@@ -1,5 +1,10 @@
 package domain
 
+import (
+	"context"
+	"go-api/middleware"
+)
+
 type Repository interface {
-	GetUsers() []User
+	GetUsers(ctx context.Context, logger *middleware.Logger) []User
 }
