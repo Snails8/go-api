@@ -4,18 +4,19 @@ import (
 	"go-api/internal/database/repository/postgres"
 	"go-api/internal/database/usecase"
 	"go-api/middleware"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"google.golang.org/genproto/googleapis/spanner/admin/database/v1"
+	"github.com/jackc/pgx/v4/pgxpool"
 )
 
-func GetUsers(dbpool *dbpool.Pool, logger *middleware.Logger) gin.HandlerFunc {
+func GetUsers(dbpool *pgxpool.Pool, logger *middleware.Logger) gin.HandlerFunc {
 
 	return gin.HandlerFunc(func (c *gin.Context) {
-		repository := postgres.NewDatabaseRepository(dbpool, logger)
+		repository := postgres.NewDatabaseRepository(dbpool)
 		databaseUsecase := usecase.NewUsecase(repository)
 
-		usersList := databaseUsecase.GetUsers()
+		usersList := databaseUsecase.GetUsers(c, logger)
 		users := make([]User, 0)
 		for _, u := range usersList {
 			user := User{
@@ -25,6 +26,8 @@ func GetUsers(dbpool *dbpool.Pool, logger *middleware.Logger) gin.HandlerFunc {
 			users = append(users, user)
 		}
 
-		c.Json
+		c.JSON(http.StatusOK, GetUsersResponse{
+			Users: users,
+		})
 	})
 }
