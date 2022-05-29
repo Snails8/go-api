@@ -4,6 +4,8 @@ import (
 	"context"
 	"go-api/internal/domain"
 	"go-api/middleware"
+	"log"
+	"time"
 
 	"github.com/jackc/pgx/v4/pgxpool"
 )
@@ -50,4 +52,18 @@ func (r *databaseRepository) GetUsers(ctx context.Context, logger *middleware.Lo
 	}
 
 	return users
+}
+
+func (r databaseRepository) StoreUser(user domain.User) error {
+	query := `INSERT INTO users (id, name, created_at, updated_at) 
+				VALUES ($1, $2, $3, $3)
+				ON CONFLICT (id)
+				DO UPDATE SET (name=$2, updated=$3)
+			`
+
+	_, err := r.dbpool.Exec(context.Background(), query, user.Name, time.Now())
+	if err != nil {
+		log.Printf("error: user exec query:  %v\n", err)
+	} 
+	return err
 }
