@@ -38,7 +38,7 @@ func (r *databaseRepository) GetUsers(ctx context.Context, logger *middleware.Lo
 		user := domain.User{}
 
 		err := rows.Scan(
-			&user.ID,
+			&user.Id,
 			&user.Name,
 		)
 		if err != nil {
