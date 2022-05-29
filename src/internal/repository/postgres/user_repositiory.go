@@ -54,7 +54,7 @@ func (r *databaseRepository) GetUsers(ctx context.Context, logger *middleware.Lo
 	return users
 }
 
-func (r databaseRepository) StoreUser(user domain.User) error {
+func (r databaseRepository) SaveUser(user domain.User) error {
 	query := `INSERT INTO users (id, name, created_at, updated_at) 
 				VALUES ($1, $2, $3, $3)
 				ON CONFLICT (id)
