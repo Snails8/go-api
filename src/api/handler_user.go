@@ -1,8 +1,8 @@
 package api
 
 import (
-	"go-api/internal/database/repository/postgres"
-	"go-api/internal/database/usecase"
+	"go-api/internal/repository/postgres"
+	"go-api/internal/usecase"
 	"go-api/middleware"
 	"net/http"
 

@@ -2,7 +2,7 @@ package usecase
 
 import (
 	"context"
-	"go-api/internal/database/domain"
+	"go-api/internal/domain"
 	"go-api/middleware"
 )
 
