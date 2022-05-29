@@ -5,3 +5,8 @@
 Dockerfile
 
 .env
+
+# IDE
+.idea
+.vscode/configurationCache.log
+.vscode/targets.log

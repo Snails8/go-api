@@ -1,3 +1,7 @@
 {
-    "makefile.extensionOutputFolder": "./.vscode"
+    "go.testTimeout": "300s",
+    "go.testEnvVars": {
+        "GIN_MODE": "test",
+        "PGPASSWORD": "postgres",
+    }
 }
