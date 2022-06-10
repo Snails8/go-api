@@ -14,7 +14,7 @@ func GetUsers(dbpool *pgxpool.Pool, logger *middleware.Logger) gin.HandlerFunc {
 
 	return gin.HandlerFunc(func (c *gin.Context) {
 		repository := postgres.NewDatabaseRepository(dbpool)
-		databaseUsecase := usecase.NewUsecase(repository)
+		databaseUsecase := usecase.NewUserUsecase(repository)
 
 		usersList := databaseUsecase.GetUsers(c, logger)
 		users := make([]User, 0)
