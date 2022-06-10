@@ -2,7 +2,7 @@ package postgres
 
 import (
 	"context"
-	"go-api/internal/domain"
+	"go-api/internal/testpackageA/domain"
 	"go-api/middleware"
 
 	"github.com/jackc/pgx/v4/pgxpool"
