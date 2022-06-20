@@ -3,7 +3,7 @@ services:
   front-app:
     container_name: front-app
     build:
-      context: ./.docker/web
+      context: .
       dockerfile: Dockerfile
     environment:
       PORT: '3000'
@@ -17,7 +17,6 @@ services:
     restart: always
     networks:
       - api
-
 networks:
   api:
     external: true

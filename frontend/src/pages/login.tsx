@@ -1,6 +1,6 @@
-import Layout from "../src/components/_layouts/Layout";
-import * as loginUser from "../src/lib/loginUser";
-import {Main} from "../src/components/login/Main";
+import Layout from "../components/_layouts/Layout";
+import * as loginUser from "../lib/loginUser";
+import {Main} from "../components/login/Main";
 
 
 const LoginPage = () => {

@@ -10,6 +10,9 @@ up:
 #	docker-compose exec app composer create-project --prefer-dist laravel/laravel .
 #	docker-compose exec app composer require predis/predis
 
+install:
+	docker-compose exec front-app yarn dev
+	
 reinstall:
 	@make destroy
 	@make install

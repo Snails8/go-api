@@ -1,8 +1,8 @@
-import '../src/assets/app.scss';
+import '../assets/app.scss';
 import {useEffect} from "react";
 import { useSetRecoilState, RecoilRoot} from "recoil";
-import {loginUserState} from "../src/states/loginUser";
-import * as loginUser from "../src/lib/loginUser";
+import {loginUserState} from "../states/loginUser";
+import * as loginUser from "../lib/loginUser";
 
 const MyApp = ({ Component, pageProps }) => {
 

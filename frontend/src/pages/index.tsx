@@ -1,11 +1,11 @@
 import React from "react";
 import {Button, Card, Col, Container, Nav, Row} from "react-bootstrap";
-import Layout from "../src/components/_layouts/Layout";
-import {useRequireLogin} from "../src/hooks/useRequireLogin";
-import Labor from "../src/components/top/partials/Labor";
-import Manage from "../src/components/top/partials/Manage";
-import Sample from "../src/components/top/partials/Sample";
-import Tab from "../src/components/top/Tab";
+import Layout from "../components/_layouts/Layout";
+import {useRequireLogin} from "../hooks/useRequireLogin";
+import Labor from "../components/top/partials/Labor";
+import Manage from "../components/top/partials/Manage";
+import Sample from "../components/top/partials/Sample";
+import Tab from "../components/top/Tab";
 
 
 const Home = () => {
