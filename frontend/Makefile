@@ -5,13 +5,12 @@ up:
 	docker-compose up -d --build
 	make yarn
 
-#create-project:
-#	docker-compose up -d --build
-#	docker-compose exec app composer create-project --prefer-dist laravel/laravel .
-#	docker-compose exec app composer require predis/predis
-
 install:
-	docker-compose exec front-app yarn dev
+	docker-compose exec front-app yarn
+	docker-compose exec front-app npx create-react-app frontend --template typescript
+	cp -R frontend/. ./
+	rm -rf frontend
+	docker-compose exec front-app yarn start	
 	
 reinstall:
 	@make destroy
