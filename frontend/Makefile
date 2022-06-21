@@ -36,4 +36,4 @@ front-app:
 	docker-compose exec front-app /bin/ash
 
 yarn:
-	docker-compose exec front-app yarn dev
+	docker-compose exec front-app yarn start
