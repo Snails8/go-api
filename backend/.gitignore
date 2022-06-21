@@ -10,3 +10,4 @@ Dockerfile
 .idea
 .vscode/configurationCache.log
 .vscode/targets.log
+.openapi-generator

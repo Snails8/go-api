@@ -8,9 +8,13 @@
  */
 package api
 
-type User struct {
+import (
+	"net/http"
 
-	Id int32 `json:"id"`
+	"github.com/gin-gonic/gin"
+)
 
-	Name string `json:"name"`
+// GetUsers - ユーザー一覧
+func GetUsers(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{})
 }

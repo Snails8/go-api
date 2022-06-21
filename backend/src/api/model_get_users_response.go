@@ -8,9 +8,7 @@
  */
 package api
 
-type User struct {
+type GetUsersResponse struct {
 
-	Id int32 `json:"id"`
-
-	Name string `json:"name"`
+	Users []User `json:"users"`
 }
