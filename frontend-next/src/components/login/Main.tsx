@@ -1,7 +1,7 @@
 import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import React, {useState} from "react";
 import Router from "next/router";
-import AlertMessage from "../../components/_partials/Alert";
+import AlertMessage from "../_partials/Alert";
 import * as loginUser from "../../lib/loginUser";
 import {useSetRecoilState} from "recoil";
 import {loginUserState} from "../../states/loginUser";
