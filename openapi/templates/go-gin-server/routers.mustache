@@ -4,7 +4,9 @@ package {{packageName}}
 import (
 	"net/http"
 
+	"go-api/middleware"
 	"github.com/gin-gonic/gin"
+	"github.com/jackc/pgx/v4/pgxpool"
 )
 
 // Route is the information for every URI.
@@ -23,20 +25,20 @@ type Route struct {
 type Routes []Route
 
 // NewRouter returns a new router.
-func NewRouter() *gin.Engine {
+func NewRouter(pgxpool *pgxpool.Pool, logger *middleware.Logger) *gin.Engine {
 	router := gin.Default()
 	for _, route := range routes {
 		switch route.Method {
 		case http.MethodGet:
-			router.GET(route.Pattern, route.HandlerFunc)
+			router.GET(route.Pattern, route.HandlerFunc(pgxpool, logger))
 		case http.MethodPost:
-			router.POST(route.Pattern, route.HandlerFunc)
+			router.POST(route.Pattern, route.HandlerFunc(pgxpool, logger))
 		case http.MethodPut:
-			router.PUT(route.Pattern, route.HandlerFunc)
+			router.PUT(route.Pattern, route.HandlerFunc(pgxpool, logger))
 		case http.MethodPatch:
-			router.PATCH(route.Pattern, route.HandlerFunc)
+			router.PATCH(route.Pattern, route.HandlerFunc(pgxpool, logger))
 		case http.MethodDelete:
-			router.DELETE(route.Pattern, route.HandlerFunc)
+			router.DELETE(route.Pattern, route.HandlerFunc(pgxpool, logger))
 		}
 	}
 
