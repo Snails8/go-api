@@ -1,0 +1,55 @@
+openapi: 3.0.1
+info:
+  title: test-api
+  version: 1.0.0
+servers:
+- url: https://_ENDPOINTS_HOST/api/v1
+paths:
+  /users:
+    get:
+      operationId: getUsers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUsersResponse'
+          description: ユーザー一覧
+      summary: ユーザー一覧
+components:
+  schemas:
+    GetUsersResponse:
+      example:
+        users:
+        - name: テスト
+          id: 1
+        - name: テスト
+          id: 1
+      properties:
+        users:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+      required:
+      - users
+      type: object
+    User:
+      example:
+        name: テスト
+        id: 1
+      properties:
+        id:
+          example: 1
+          type: integer
+        name:
+          example: テスト
+          type: string
+      required:
+      - id
+      - name
+      type: object
+x-google-backend:
+  address: https://_API_HOST
+  protocol: h2
+  deadline: 60.0
+x-original-swagger-version: "2.0"
