@@ -1,31 +1,27 @@
-swagger: '2.0'
+openapi: 3.0.1
 info:
   title: test-api
   version: 1.0.0
-host: _ENDPOINTS_HOST
-basePath: /api/v1
-schemes:
-  - https
-consumes:
-  - application/json
-produces:
-  - application/json
+servers:
+  - url: http://{host}:{port}/api/v0
+    description: 開発用
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '7001'
+paths:
+  "/users":
+    $ref: "./paths/users.yaml"
+  "/users/{userId}":
+    $ref: "./paths/users.userId.yaml"
+
+components:
+  schemas:
+    $ref: '#/components/schemas/index.yaml'
+
 x-google-backend:
   address: https://_API_HOST
   protocol: h2
   deadline: 60.0
-paths:
-  /users:
-    get:
-      summary: ユーザー一覧
-      operationId: getUsers
-      responses:
-        '200':
-          description: ユーザー一覧
-          schema:
-            $ref: '#/definitions/GetUsersResponse'
-definitions:
-  GetUsersResponse:
-    $ref: './definitions/GetUsersResponse.yaml'
-  User:
-    $ref: './definitions/User.yaml'
+x-original-swagger-version: "2.0"

@@ -1,0 +1,10 @@
+get:
+  operationId: getUsers
+  responses:
+    "200":
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/Users.yaml'
+      description: ユーザー一覧
+  summary: ユーザー一覧

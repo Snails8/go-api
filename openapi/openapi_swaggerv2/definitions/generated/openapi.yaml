@@ -13,12 +13,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetUsersResponse'
+                $ref: '#/components/schemas/GetUsers'
           description: ユーザー一覧
       summary: ユーザー一覧
 components:
   schemas:
-    GetUsersResponse:
+    GetUsers:
       example:
         users:
         - name: テスト
@@ -47,6 +47,15 @@ components:
       required:
       - id
       - name
+      type: object
+    GetUsersResponse:
+      properties:
+        users:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+      required:
+      - users
       type: object
 x-google-backend:
   address: https://_API_HOST
