@@ -22,8 +22,8 @@ func main() {
 
 	logger := &middleware.Logger{}
 
-	r := NewRouter(dbpool, logger)
-	r.Run()
+	r := api.NewRouter(dbpool, logger)
+	r.Run(":7000")  // docker の published port と衝突しないようにする
 }
 
 // ---------  use http http://localhost:7001/ ---------------------------
