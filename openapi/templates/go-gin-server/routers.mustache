@@ -5,6 +5,8 @@ import (
 	"net/http"
 
 	"go-api/middleware"
+
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v4/pgxpool"
 )
@@ -27,6 +29,11 @@ type Routes []Route
 // NewRouter returns a new router.
 func NewRouter(pgxpool *pgxpool.Pool, logger *middleware.Logger) *gin.Engine {
 	router := gin.Default()
+
+	config := cors.DefaultConfig()
+    config.AllowOrigins = []string{"http://localhost:3000"}
+    router.Use(cors.New(config))
+
 	for _, route := range routes {
 		switch route.Method {
 		case http.MethodGet:
