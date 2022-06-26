@@ -14,10 +14,12 @@ import (
 
 func main() {
 	ctx := context.Background()
+	
 	dbpool, err := pgxpool.Connect(ctx, os.Getenv("DB_DSN"))
 	if err != nil {
 		fmt.Println("cloud not connect db")
 	}
+
 	logger := &middleware.Logger{}
 
 	r := NewRouter(dbpool, logger)
@@ -35,7 +37,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 // ------------ use gin.Router listen and server on 0.0.0.0:8080 -------------
-func initGinRouter() {
+func initGinRouterSimple() {
 	r := gin.Default()
     r.GET("/", func(c *gin.Context) {
         c.String(http.StatusOK, "Hello World")
@@ -78,3 +80,12 @@ func NewRouter(dbpool *pgxpool.Pool, logger *middleware.Logger) *gin.Engine {
 	
 	return router
 }
+
+// -------------- gin router 2 -----------------------------------------
+// func initGinRouter(dbpool *pgxpool.Pool, logger *middleware.Logger) {
+// 	r := gin.Default()
+
+// 	for _, r := range api.NewRouter(dbpool, logger).Route {
+
+// 	}
+// }

@@ -11,3 +11,7 @@ Dockerfile
 .vscode/configurationCache.log
 .vscode/targets.log
 .openapi-generator
+
+# API
+src/api/model_*.go
+src/api/routers.go
