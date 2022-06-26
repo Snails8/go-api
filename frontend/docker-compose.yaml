@@ -15,8 +15,8 @@ services:
     stdin_open: true
     tty: true
     restart: always
-    networks:
-      - api
-networks:
-  api:
-    external: true
+    # networks:
+      # - api
+# networks:
+#   api:
+#     external: true
