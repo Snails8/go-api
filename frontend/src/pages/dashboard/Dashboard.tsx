@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { createSearchParams } from 'react-router-dom'
 
 export const Dashboard: React.FC = () => {
     const [message, setMessage] = useState("")
@@ -14,6 +15,11 @@ export const Dashboard: React.FC = () => {
   
     console.log(message)
 
+    const params: string = createSearchParams({
+      name: "sample",
+      type: "test"
+    }).toString();
+
     return (
         <>
           <h1>Sample Home</h1>
@@ -21,6 +27,8 @@ export const Dashboard: React.FC = () => {
             <ul>
               <li><Link to="page1">Sample Page1</Link></li>
               <li><Link to="page2">Sample Page2</Link></li>
+              <li><Link to="page2?name=鈴木&type=test">Sample Page2 With Query1</Link></li>
+              <li><Link to={`page2?${params}`}>Sample Page2 With Query2</Link></li>
             </ul>
           </nav>  
         </>
