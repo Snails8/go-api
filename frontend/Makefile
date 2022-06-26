@@ -5,12 +5,7 @@ up:
 	docker-compose up -d --build
 	make yarn
 
-install:
-	docker-compose exec front-app yarn
-	docker-compose exec front-app npx create-react-app frontend --template typescript
-	cp -R frontend/. ./
-	rm -rf frontend
-	docker-compose exec front-app yarn start	
+
 	
 reinstall:
 	@make destroy
@@ -35,5 +30,19 @@ ps:
 front-app:
 	docker-compose exec front-app /bin/ash
 
+# =======================================================
+# setup
+# =======================================================
 yarn:
 	docker-compose exec front-app yarn start
+
+build:
+	docker-compose exec front-app yarn build
+
+install:
+	docker-compose exec front-app yarn
+	docker-compose exec front-app npx create-react-app frontend --template typescript
+	cp -R frontend/. ./
+	rm -rf frontend
+	docker-compose exec front-app yarn build
+	docker-compose exec front-app yarn start	
