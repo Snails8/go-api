@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Dashboard: React.FC = () => {
     const [message, setMessage] = useState("")
@@ -15,7 +16,13 @@ export const Dashboard: React.FC = () => {
 
     return (
         <>
-            <div>aaa</div>        
+          <h1>Sample Home</h1>
+          <nav>
+            <ul>
+              <li><Link to="page1">Sample Page1</Link></li>
+              <li><Link to="page2">Sample Page2</Link></li>
+            </ul>
+          </nav>  
         </>
     )
 }
