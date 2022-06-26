@@ -9,7 +9,7 @@ up:
 
 down:
 	cd backend && \
-	make down 
+	make down && \ 
 	cd ../frontend && \
 	make down
 
@@ -30,7 +30,7 @@ destroy:
 # ====================================================================
 setup:
 	cd backend && \
-	make install
+	make install && \
 	cd ../frontend && \
 	make install
 	make yarn
