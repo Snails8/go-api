@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 export const Dashboard: React.FC = () => {
     const [message, setMessage] = useState("")
@@ -14,6 +15,8 @@ export const Dashboard: React.FC = () => {
     }, [])
   
     console.log(message)
+
+    const navigate = useNavigate()
 
     const params: string = createSearchParams({
       name: "sample",
@@ -31,6 +34,8 @@ export const Dashboard: React.FC = () => {
               <li><Link to={`page2?${params}`}>Sample Page2 With Query2</Link></li>
               <li><Link to="page3">Sample Page3 props</Link></li>
             </ul>
+
+            <button onClick={() => navigate("page1")}>SamplePage1</button>
           </nav>  
         </>
     )
