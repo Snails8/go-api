@@ -6,7 +6,7 @@ import { Dashboard } from "./pages/dashboard/Dashboard";
 import { SamplePage1 } from "./pages/pageA";
 import { NotFound } from "./pages/notFound";
 import { SamplePage3 } from "./pages/pageC";
-import { SamplePage4, SamplePage4Child1, SamplePage4Child2 } from "./pages/pageD";
+import { SamplePage4, SamplePage4Child1, SamplePage4Child2, SamplePage4Child3 } from "./pages/pageD";
 
 
 export const RouterConfig:React.VFC =() => {
@@ -22,6 +22,7 @@ export const RouterConfig:React.VFC =() => {
           <Route index />
           <Route path="child1" element={<SamplePage4Child1 />} />
           <Route path="child2" element={<SamplePage4Child2 />} />
+          <Route path=":cildid" element={<SamplePage4Child3 />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
