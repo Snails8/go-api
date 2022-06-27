@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { createSearchParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import { Header } from '../../components/atoms/Header/Header';
+import { Sidebar } from '../../components/atoms/Sidebar/Sidebar';
+
+import styles from './Dashboard.module.css'
 
 export const Dashboard: React.FC = () => {
     const [message, setMessage] = useState("")
@@ -29,6 +32,8 @@ export const Dashboard: React.FC = () => {
           <Header 
             pageTitle='title'
           />
+          <Sidebar />
+          <div className={`${styles.base}`}>
           <h1>Sample Home</h1>
           <nav>
             <ul>
@@ -42,6 +47,7 @@ export const Dashboard: React.FC = () => {
 
             <button onClick={() => navigate("page1")}>SamplePage1</button>
           </nav>  
-        </>
+          </div>
+        </>  
     )
 }
