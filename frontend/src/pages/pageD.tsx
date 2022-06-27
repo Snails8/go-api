@@ -1,16 +1,30 @@
 import React, { FC } from "react";
-import { Outlet, Link, useNavigate, useParams} from "react-router-dom";
+import { Outlet, Link, useNavigate, useParams, NavLink} from "react-router-dom";
 
 export const SamplePage4:FC = () => {
-  const navigate = useNavigate();
+    const active = {
+        fontWeight: "bold",
+        color: "#d57276"
+    }
 
-  return (
+    const inactive = {
+        fontWeight: "normal",
+        color: "#65b2c6"       
+    }
+
+    const navigate = useNavigate();
+
+    const linkStyle = (isActive:boolean) => {
+        return isActive ? active : inactive;
+    }
+
+    return (
     <>
       <h3>Sample Page 4</h3>
       <ul>
-        <li><Link to="child1">Show Child1</Link></li>
-        <li><Link to="child2">Show Child2</Link></li>
-        <li><Link to="123">Show Child3</Link></li>
+        <li><NavLink to="child1" style={({isActive}) => linkStyle(isActive)}>Show Child1</NavLink></li>
+        <li><NavLink to="child2" style={({isActive}) => linkStyle(isActive)}>Show Child2</NavLink></li>
+        <li><NavLink to="123" style={({isActive}) => linkStyle(isActive)}>Show Child3</NavLink></li>
       </ul>
       <button onClick={()=> navigate("") }>clear</button>
       <Outlet  />
