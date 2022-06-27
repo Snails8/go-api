@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createSearchParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import { Header } from '../../components/atoms/Header/Header';
 
 export const Dashboard: React.FC = () => {
     const [message, setMessage] = useState("")
@@ -25,6 +26,9 @@ export const Dashboard: React.FC = () => {
 
     return (
         <>
+          <Header 
+            pageTitle='title'
+          />
           <h1>Sample Home</h1>
           <nav>
             <ul>
