@@ -7,7 +7,21 @@ export const Sidebar: React.FC = ({
 }) => { 
     return (
         <div className={`${styles.base}`}>
-            saaaaaaa
+            <div className={ `${styles.sidebar_item}` }>
+                <div className={ `${styles.sidebar_text}`} >text</div>
+            </div>
+            <div className={ `${styles.sidebar_item}` }>
+                <div className={ `${styles.sidebar_text}`} >text</div>
+            </div>
+            <div className={ `${styles.sidebar_item}` }>
+                <div className={ `${styles.sidebar_text}`} >text</div>
+            </div>
+            <div className={ `${styles.sidebar_item}` }>
+                <div className={ `${styles.sidebar_text}`} >text</div>
+            </div>
+            <div className={ `${styles.sidebar_item}` }>
+                <div className={ `${styles.sidebar_text}`} >text</div>
+            </div>
         </div>
     )
 
