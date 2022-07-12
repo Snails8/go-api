@@ -4,8 +4,6 @@ import { createSearchParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import { BasePage } from '../../components/templates/BasePage/BasePage';
 
-import styles from './Dashboard.module.css'
-
 export const Dashboard: React.FC = () => {
     const [message, setMessage] = useState("")
   
