@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SamplePage2 } from "./pages/pageB";
 import { Dashboard } from "./pages/dashboard/Dashboard";
 import { SamplePage1 } from "./pages/pageA";
-import { NotFound } from "./pages/notFound";
+import { NotFound } from "./pages/NotFound/notFound";
 import { SamplePage3 } from "./pages/pageC";
 import { SamplePage4, SamplePage4Child1, SamplePage4Child2, SamplePage4Child3 } from "./pages/pageD";
 import { Users } from "./pages/Users/Users";
