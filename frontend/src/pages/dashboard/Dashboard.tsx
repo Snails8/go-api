@@ -30,7 +30,7 @@ export const Dashboard: React.FC = () => {
             <h1>Sample Home</h1>
             <nav>
               <ul>
-                <li><Link to="page1">Sample Page1</Link></li>
+                <li><Link to="training">Training</Link></li>
                 <li><Link to="page2">Sample Page2</Link></li>
                 <li><Link to="page2?name=鈴木&type=test">Sample Page2 With Query1</Link></li>
                 <li><Link to={`page2?${params}`}>Sample Page2 With Query2</Link></li>

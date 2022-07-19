@@ -9,9 +9,9 @@ export const Sidebar: React.FC = ({
 }) => { 
     return (
         <SidebarBg>
-            <Link to="page1">
+            <Link to="training">
                 <div className={ `${styles.sidebar_item}` }>
-                    <div className={ `${styles.sidebar_text}`} >page1</div>
+                    <div className={ `${styles.sidebar_text}`} >training</div>
                 </div>
             </Link>
             <Link to="page2">

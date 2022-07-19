@@ -72,16 +72,26 @@ testmigrate:
 # ====================================================================
 # genapi
 # ====================================================================
-
+api: ## Generate Go implementation from API specs
+	docker run --rm -v "${CURDIR}/../:/local" openapitools/openapi-generator-cli:v5.1.1 generate \
+	-i /local/openapi/test.yaml \
+	-g go-gin-server \
+	-o /local/backend/src \
+	-t /local/openapi/templates/go-gin-server \
+	--additional-properties=apiPath=api \
+	--additional-properties=packageName=api
+	rm  src/api/README.md src/api/api_default.go src/main.go
+	mv src/api/openapi.yaml ../openapi/generated/
+	
 # ====================================================================
 # setup
 # ====================================================================
-setup:
+install:
 	cp .env.exmaple .env
 	docker-compose -f docker-compose.yaml -p ${APP_NAME} up -d --build
 	make migrate
 	make seed
 	echo "########################################################"
-	echo "                     Enjoy Go Life                      "
+	echo "                     Backend done                       "
 	echo "######################## finish ########################"
 

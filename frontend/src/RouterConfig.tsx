@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { SamplePage2 } from "./pages/pageB";
 import { Dashboard } from "./pages/dashboard/Dashboard";
-import { SamplePage1 } from "./pages/pageA";
+import { Training } from "./pages/Training/Training";
 import { NotFound } from "./pages/NotFound/notFound";
 import { SamplePage3 } from "./pages/pageC";
 import { SamplePage4, SamplePage4Child1, SamplePage4Child2, SamplePage4Child3 } from "./pages/pageD";
@@ -16,7 +16,7 @@ export const RouterConfig:React.VFC =() => {
       <BrowserRouter>
         <Routes>
           <Route index element={<Dashboard />} />
-          <Route path="page1" element={<SamplePage1 />} />
+          <Route path="training" element={<Training />} />
           <Route path="page2" element={<SamplePage2 />} />
           <Route path="page3" element={<SamplePage3 Message="Hello Router" />} />
           <Route path="page4" element={<SamplePage4 />} >
