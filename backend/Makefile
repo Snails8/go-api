@@ -8,7 +8,7 @@ SED := $3
 # docker command
 # ====================================================================
 up:
-	docker-compose -f docker-compose.yaml -p ${APP_NAME} up -d
+	docker-compose -f docker-compose.yaml -p ${APP_NAME} up
 
 down:
 	docker compose -f docker-compose.yaml -p ${APP_NAME} down
@@ -37,7 +37,7 @@ seed:
 	docker compose -p ${APP_NAME} exec db psql \
 	-h localhost \
 	-U postgres \
-	-d go_app \
+	-d go_api \
 	-v ON_ERROR_STOP=1 \
 	-f /seeds/${SEED_ENV}/seeds.sql
 
