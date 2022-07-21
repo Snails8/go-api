@@ -17,21 +17,22 @@ export interface User {
 }
 
 export const useUsers = () => {
-    const [users, setUsers] = useState<User[] | undefined>(undefined);
+    const [users, setUsers] = useState<User[]>([]);
 
     useEffect(() => {
-        fetch('http://localhost:7001/api/v1/users')
-            .then(res => res.json())
-            .then((users) => {
-                setUsers(users)
-            },
-            (error) => {
-                console.log(error);
-                const errData = {
+        fetch('http://localhost:7001/api/v1/users',{
+            method: 'GET'
+        })
+        .then(res => res.json())
+        .then((data) => {
+            setUsers(data)
+        },
+        (error) => {
+            console.log(error);
+            const errData = {
 
-                }
             }
-            )
+        })
     }, [])
 
     return {
