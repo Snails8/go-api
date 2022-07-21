@@ -12,7 +12,9 @@ export const Users:React.FC = () => {
     return (
         <>
           <BasePage>
-            <UsersTable />  
+            <UsersTable 
+              users={users}
+            />  
           </BasePage>
         </>
     )
