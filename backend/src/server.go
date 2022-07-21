@@ -14,16 +14,28 @@ import (
 
 func main() {
 	ctx := context.Background()
-	
+
+	logger := &middleware.Logger{}
+
+	dbpool := initDB(ctx)
+	defer dbpool.Close()
+
+	r := api.NewRouter(dbpool, logger) // http://localhost:7001/api/v1 を叩くと表示(内部でcors許可している)
+	r.Run(":7000")  // docker の published port と衝突しないようにする
+}
+
+func initDB(ctx context.Context) *pgxpool.Pool {
 	dbpool, err := pgxpool.Connect(ctx, os.Getenv("DB_DSN"))
 	if err != nil {
 		fmt.Println("cloud not connect db")
 	}
 
-	logger := &middleware.Logger{}
+	err = dbpool.Ping(ctx)
+	if err != nil {
+		fmt.Println("cloud not connect db")
+	}
 
-	r := api.NewRouter(dbpool, logger)
-	r.Run(":7000")  // docker の published port と衝突しないようにする
+	return dbpool
 }
 
 // ---------  use http http://localhost:7001/ ---------------------------
