@@ -4,11 +4,11 @@ import { BasePage } from "../../components/templates/BasePage/BasePage";
 
 import {
   useUsers
-} from '../../hooks/useUsers';
+} from '../../hooks';
 
 export const Users:React.FC = () => {
   const users = useUsers();
-  
+
     return (
         <>
           <BasePage>
