@@ -1,33 +1,49 @@
-// Tはレスポンスのjsonの型を指定する
+const defaultTimeoutMs = 10 * 1000
+
+// catchした際にタイムアウトによるエラーかそれ以外のエラーか判別するため
+export class TimeoutError extends Error {}
+
+const timeout = <T>(task: Promise<T>, ms?: number) => {
+  const timeoutMs = ms || defaultTimeoutMs
+  const timeoutTask = new Promise((resolve, _) => {
+    setTimeout(resolve, timeoutMs)
+  }).then(() =>
+    Promise.reject(
+      new TimeoutError(`Operation timed out after ${timeoutMs} ms`)
+    )
+  )
+
+  return Promise.race([task, timeoutTask])
+}
+
 const wrap = <T>(task: Promise<Response>): Promise<T> => {
-    return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     task
-        .then(response => {
+      .then(response => {
         if (response.ok) {
-            response
+          response
             .json()
             .then(json => {
-                // jsonが取得できた場合だけresolve
-                resolve(json)
+              resolve(json)
             })
             .catch(error => {
-                reject(error)
+              reject(error)
             })
         } else {
-            reject(response)
+          reject(response)
         }
-        })
-        .catch(error => {
+      })
+      .catch(error => {
         reject(error)
-        })
-    })
+      })
+  })
 }
 
 const fetcher = <T = any>(
-    input: RequestInfo,
-    init?: RequestInit
+  input: RequestInfo,
+  init?: RequestInit
 ): Promise<T> => {
-    return wrap<T>((fetch(input, init)))
+  return wrap<T>(timeout(fetch(input, init)))
 }
 
 export default fetcher
