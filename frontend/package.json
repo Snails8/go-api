@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate:api-client": "docker run --rm -v \"${PWD}/..:/local\" openapitools/openapi-generator-cli:v5.1.1 generate -i /local/openapi/test.yaml -g typescript-fetch -o /local/frontend/src/api-client --additional-properties=typescriptThreePlus=true"
   },
   "eslintConfig": {
     "extends": [

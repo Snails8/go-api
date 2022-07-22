@@ -42,3 +42,6 @@ install:
 	rm -rf frontend
 	docker-compose exec ${CONTAINER_NAME} yarn build
 	docker-compose exec ${CONTAINER_NAME} yarn start	
+
+api:
+	yarn generate:api-client
