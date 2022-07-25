@@ -8,6 +8,8 @@ import { NotFound } from "./pages/NotFound/notFound";
 import { SamplePage3 } from "./pages/pageC";
 import { SamplePage4, SamplePage4Child1, SamplePage4Child2, SamplePage4Child3 } from "./pages/pageD";
 import { Users } from "./pages/Users/Users";
+import { ChildTabPage } from "./pages/Tabs/ChildTab";
+import { ParentTabPage } from "./pages/Tabs/ParentTab";
 
 
 export const RouterConfig:React.VFC =() => {
@@ -26,7 +28,9 @@ export const RouterConfig:React.VFC =() => {
             <Route path=":cildid" element={<SamplePage4Child3 />} />
           </Route>
           <Route path="*" element={<NotFound />} />
-          <Route path="users" element={<Users />} />  
+          <Route path="users" element={<Users />} />
+          <Route path="parent-tab" element={<ParentTabPage />} />
+          <Route path="child-tab" element={<ChildTabPage />} />  
         </Routes>
       </BrowserRouter>
     </>
