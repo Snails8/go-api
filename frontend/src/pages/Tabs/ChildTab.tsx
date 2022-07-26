@@ -30,11 +30,14 @@ export const ChildTabPage:React.FC =() => {
             <p>受け取ったメッセージ：「{message}」</p>
             <button onClick={() => window.open("page3")}>別タブで開く</button>
 
-            <h4>window.openerで親tabに値を送信する</h4>
+            <h4>window.openerで親windowに値を送信する</h4>
             <label>text</label>
             <input type="text" name="childString" defaultValue={childString}
                 onChange={(e) => setChildString(e.target.value)}
             />
+
+            <h5>window.openerで親windowを初期化する</h5>
+            <button onClick={(e) =>  window.opener.location.reload()}>親側で再度API通信</button>
         </BasePage>
         </>
     )

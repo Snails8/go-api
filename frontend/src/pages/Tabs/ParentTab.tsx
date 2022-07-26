@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BasePage } from "../../components/templates/BasePage/BasePage";
 
 export const ParentTabPage:React.FC =() => {
@@ -14,12 +14,13 @@ export const ParentTabPage:React.FC =() => {
         localStorage.setItem('key', JSON.stringify(message));
     }
     
-    // 子の変化を感知できてないっぽい(直でDOM書き換えているから？)
+    // TODO::子の変化を感知できてない(JavaScriptで値を変えた場合onchangeイベントは発生しない)
     useEffect(() => {
         window.addEventListener('input', () => {
             console.log("子から受け取った値が変化しているのを感知")
         })
     }, [childString])
+
     return (
         <>
         <BasePage>
