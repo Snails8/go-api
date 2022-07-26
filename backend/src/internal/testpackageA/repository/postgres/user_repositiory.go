@@ -24,7 +24,7 @@ func NewDatabaseRepository(dbpool *pgxpool.Pool,) domain.Repository {
 
 func (r *databaseRepository) GetUsers(ctx context.Context, logger *middleware.Logger) []domain.User {
 	query :=`
-		SELECT users.id, users.name FROM users ORDER BY id 
+		SELECT users.id, users.name, users.email FROM users ORDER BY id 
 	`
 
 	rows, err := r.dbpool.Query(context.Background(), query)
@@ -42,6 +42,7 @@ func (r *databaseRepository) GetUsers(ctx context.Context, logger *middleware.Lo
 		err := rows.Scan(
 			&user.Id,
 			&user.Name,
+			&user.Email,
 		)
 		if err != nil {
 			logger.Error.Printf("could not query: %v\n", err)

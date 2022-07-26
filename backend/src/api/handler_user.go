@@ -22,6 +22,7 @@ func GetUsers(dbpool *pgxpool.Pool, logger *middleware.Logger) gin.HandlerFunc {
 			user := User{
 				Id: u.Id,
 				Name: u.Name,
+				Email: u.Email,
 			}
 			users = append(users, user)
 		}
