@@ -14,8 +14,11 @@ export const ParentTabPage:React.FC =() => {
         localStorage.setItem('key', JSON.stringify(message));
     }
     
+    // 子の変化を感知できてないっぽい(直でDOM書き換えているから？)
     useEffect(() => {
-        console.log(childString)
+        window.addEventListener('input', () => {
+            console.log("子から受け取った値が変化しているのを感知")
+        })
     }, [childString])
     return (
         <>

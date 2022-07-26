@@ -15,17 +15,12 @@ export const ChildTabPage:React.FC =() => {
 
 
     useEffect(() => {
-        // ここリロード必要
         if (window.opener == null) {
             return window.close()
         } else {
             window.opener.document.getElementById("childString").value = childString
         }
     },[childString])
-
-    const handleChange = (e:any) => {
-        setChildString(e.target.value)
-    }
     
     return (
         <>
