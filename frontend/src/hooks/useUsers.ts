@@ -15,6 +15,13 @@ export interface User {
      * @memberof User
      */
     name: string;
+
+        /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    email: string;
 }
 
 export const useUsers = () => {

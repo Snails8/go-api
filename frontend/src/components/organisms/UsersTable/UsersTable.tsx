@@ -20,7 +20,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({
           <tr>
             <th className={`${styles.th}`} style={{ width: 100 }}>id</th>
             <th className={`${styles.th}`} style={{ width: 100 }}>name</th>
-            <th className={`${styles.th}`} style={{ width: 100 }}>th</th>
+            <th className={`${styles.th}`} style={{ width: 100 }}>email</th>
           </tr>
         </thead>
         <tbody>
@@ -30,7 +30,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({
                   <tr>
                     <td className={`${styles.td}`}>{user.id}</td>
                     <td className={`${styles.td}`}>{user.name}</td>
-                    <td className={`${styles.td}`}>td</td>
+                    <td className={`${styles.td}`}>{user.email}</td>
                   </tr>
                 )
               })
