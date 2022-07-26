@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FormText } from "../../atoms/FormText/FormText";
 
 import styles from "./UserCreateForm.module.css"
 
 export const UserCreateForm:React.FC = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const navigate = useNavigate()
+
+    const [name, setName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
     
     async function handleSubmit(e: any) {
         e.preventDefault();
@@ -14,10 +17,21 @@ export const UserCreateForm:React.FC = () => {
             email: email,
         }
 
-        const res = await fetch("http://localhost:7001/api/v1/users/create",{
+        fetch("http://localhost:7001/api/v1/users/create",{
             method: "POST",
             body: JSON.stringify(fromData)
-        })
+        }).then((res) => {
+            if(!res.ok) {
+                console.log('error!');
+            } 
+            console.log('ok!');
+
+            return navigate("/users");
+        }).then((data)  => {
+            console.log(data);
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     return (
