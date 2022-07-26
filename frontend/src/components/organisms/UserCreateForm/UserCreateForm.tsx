@@ -26,7 +26,12 @@ export const UserCreateForm:React.FC = () => {
             } 
             console.log('ok!');
 
-            return navigate("/users");
+            return navigate("/users", {
+                state: {
+                    isSave: true
+                },
+                replace: false,
+            });
         }).then((data)  => {
             console.log(data);
         }).catch((error) => {
@@ -74,7 +79,7 @@ export const UserCreateForm:React.FC = () => {
             </div>
 
             <div>
-                <button type="submit" className="btn btn-success">検索</button>
+                <button type="submit" className="btn btn-success">保存</button>
             </div>
         </form>
     )

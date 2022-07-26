@@ -8,9 +8,20 @@ import {
   User,
   useUsers
 } from '../../hooks';
-import { Link, Outlet } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export const Users:React.FC = () => {
+  const location = useLocation()
+  const [isSave, setIsSave] = useState<{isSave: boolean}>(location.state as {isSave: boolean})
+
+  useEffect(() => {
+    if(location.state) {
+      console.log(location.state)
+      setIsSave({isSave: true})
+    } else {
+      setIsSave({isSave: false})
+    }
+  },[])
   // TODO::コンパイルを通すため一時的にany
   // 解消方法はfetch の型がany になってしまうのでその修正
   // const users = useUsers();
@@ -34,6 +45,9 @@ export const Users:React.FC = () => {
     return (
         <>
           <BasePage>
+          {isSave?.isSave === true ?
+            <h5>成功</h5> : ''
+          }
           <Link to="/users/create">作成</Link>
             <UsersTable 
               users={users}
