@@ -8,6 +8,7 @@ import {
   User,
   useUsers
 } from '../../hooks';
+import { Link, Outlet } from "react-router-dom";
 
 export const Users:React.FC = () => {
   // TODO::コンパイルを通すため一時的にany
@@ -33,6 +34,7 @@ export const Users:React.FC = () => {
     return (
         <>
           <BasePage>
+          <Link to="/users/create">作成</Link>
             <UsersTable 
               users={users}
             />  
