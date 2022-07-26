@@ -9,32 +9,32 @@ export const Sidebar: React.FC = ({
 }) => { 
     return (
         <SidebarBg>
-            <Link to="training">
+            <Link to="/training">
                 <div className={ `${styles.sidebar_item}` }>
                     <div className={ `${styles.sidebar_text}`} >training</div>
                 </div>
             </Link>
-            <Link to="page2">
+            <Link to="/page2">
                 <div className={ `${styles.sidebar_item}` }>
                     <div className={ `${styles.sidebar_text}`} >page2</div>
                 </div>
             </Link>
-            <Link to="page3">
+            <Link to="/page3">
                 <div className={ `${styles.sidebar_item}` }>
                     <div className={ `${styles.sidebar_text}`} >page3</div>
                 </div>
             </Link>
-            <Link to="page4">
+            <Link to="/page4">
                 <div className={ `${styles.sidebar_item}` }>
                     <div className={ `${styles.sidebar_text}`} >page4</div>
                 </div>
             </Link>
-            <Link to="parent-tab">
+            <Link to="/parent-tab">
                 <div className={ `${styles.sidebar_item}` }>
                     <div className={ `${styles.sidebar_text}`} >タブ間通信検証</div>
                 </div>
             </Link>
-            <Link to="users">
+            <Link to="/users">
                 <div className={ `${styles.sidebar_item}` }>
                     <div className={ `${styles.sidebar_text}`} >ユーザー管理</div>
                 </div>
