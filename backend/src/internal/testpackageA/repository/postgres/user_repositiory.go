@@ -56,13 +56,13 @@ func (r *databaseRepository) GetUsers(ctx context.Context, logger *middleware.Lo
 }
 
 func (r databaseRepository) SaveUser(user domain.User) error {
-	query := `INSERT INTO users (id, name, created_at, updated_at) 
+	query := `INSERT INTO users (name, email, created_at, updated_at) 
 				VALUES ($1, $2, $3, $3)
-				ON CONFLICT (id)
-				DO UPDATE SET (name=$2, updated=$3)
+				ON CONFLICT (email)
+				DO UPDATE SET name=$1, email=$2, updated_at=$3
 			`
 
-	_, err := r.dbpool.Exec(context.Background(), query, user.Name, time.Now())
+	_, err := r.dbpool.Exec(context.Background(), query, user.Name, user.Email, time.Now())
 	if err != nil {
 		log.Printf("error: user exec query:  %v\n", err)
 	} 

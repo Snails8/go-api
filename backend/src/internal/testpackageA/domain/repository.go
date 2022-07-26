@@ -7,6 +7,7 @@ import (
 
 type Repository interface {
 	GetUsers(ctx context.Context, logger *middleware.Logger) []User
+	SaveUser(user User) error
 }
 
 type TaskRepository interface {
