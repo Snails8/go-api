@@ -7,8 +7,21 @@ export const UserCreateForm:React.FC = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     
+    async function handleSubmit(e: any) {
+        e.preventDefault();
+        const fromData = {
+            name: name,
+            email: email,
+        }
+
+        const res = await fetch("http://localhost:7001/api/v1/users/create",{
+            method: "POST",
+            body: JSON.stringify(fromData)
+        })
+    }
+
     return (
-        <>
+        <form onSubmit={handleSubmit}>
             <div className={`${styles.form_container}`}>
                 <div className={`${styles.form_item}`}>
                     <div className={`${styles.container_inner}`}>
@@ -45,6 +58,10 @@ export const UserCreateForm:React.FC = () => {
                     </div>
                 </div>
             </div>
-        </>
+
+            <div>
+                <button type="submit" className="btn btn-success">検索</button>
+            </div>
+        </form>
     )
 }
