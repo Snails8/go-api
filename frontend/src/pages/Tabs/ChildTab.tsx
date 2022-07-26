@@ -1,20 +1,25 @@
-import React from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { BasePage } from "../../components/templates/BasePage/BasePage";
 
 export const ChildTabPage:React.FC =() => {
+    const [message, setMessage] = useState(JSON.parse(localStorage.getItem('key') as string))
 
-    const [searchParams] = useSearchParams()
+    useEffect(() => {
+        window.addEventListener('storage', storageChange)
+    })
 
-    const query1 = searchParams.get("name")
-    const query2 = searchParams.get("type");
+    const storageChange = (e:any) => {
+        setMessage(JSON.parse(localStorage.getItem('key') as string))
+    }
 
+    
     return (
         <>
         <BasePage>
             <h3>子タブ</h3>
-            <p>name={query1}</p>
-            <p>type={query2}</p>
+            <div>
+                <p>受け取ったメッセージ：「{message}」</p>
+            </div>
             <button onClick={() => window.open("page3")}>別タブで開く</button>
         </BasePage>
         </>
