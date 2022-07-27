@@ -11,6 +11,7 @@ import { Users } from "./pages/Users/Users";
 import { ChildTabPage } from "./pages/Tabs/ChildTab";
 import { ParentTabPage } from "./pages/Tabs/ParentTab";
 import { UserCreate } from "./pages/UserCreate/UserCreate";
+import { StatePage } from "./pages/StatePage/StatePage";
 
 
 export const RouterConfig:React.VFC =() => {
@@ -31,6 +32,7 @@ export const RouterConfig:React.VFC =() => {
           <Route path="*" element={<NotFound />} />
           <Route path="users" element={<Users />} />
           <Route path="users/create" element={<UserCreate />} />
+          <Route path="states" element={<StatePage />} />
           <Route path="parent-tab" element={<ParentTabPage />} />
           <Route path="child-tab" element={<ChildTabPage />} />  
         </Routes>

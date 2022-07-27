@@ -29,6 +29,11 @@ export const Sidebar: React.FC = ({
                     <div className={ `${styles.sidebar_text}`} >page4</div>
                 </div>
             </Link>
+            <Link to="/states">
+                <div className={ `${styles.sidebar_item}` }>
+                    <div className={ `${styles.sidebar_text}`} >状態保持検証</div>
+                </div>
+            </Link>
             <Link to="/parent-tab">
                 <div className={ `${styles.sidebar_item}` }>
                     <div className={ `${styles.sidebar_text}`} >タブ間通信検証</div>
