@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { BasePage } from "../../components/templates/BasePage/BasePage";
 
-export const StatePage:React.FC =() => {
+export const StatePage:React.FC = ({
+
+}) => {
     const [reloadText, setReloadText] = useState<string>("") 
     
     useEffect(() => {
@@ -10,8 +12,11 @@ export const StatePage:React.FC =() => {
         window.addEventListener('beforeunload', (e) => {
             console.log("reloadりろーど時に実行される")
             localStorage.setItem('reload', "reloadされたよ")
+
+            //ここでstateを入れてもリセットされる
         })
     },[])
+
     return (
         <>
         <BasePage>
@@ -19,6 +24,9 @@ export const StatePage:React.FC =() => {
 
             <h3>ブラウザのリロードを感知する</h3>
             <span>{reloadText}</span>
+
+            <h3>遷移元のURLを取得する</h3>
+            <span>{window.document.referrer}</span>
         </BasePage>
         </>
     )
