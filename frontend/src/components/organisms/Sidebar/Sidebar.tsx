@@ -14,6 +14,11 @@ export const Sidebar: React.FC = ({
                     <div className={ `${styles.sidebar_text}`} >training</div>
                 </div>
             </Link>
+            <Link to="/fishes">
+                <div className={ `${styles.sidebar_item}` }>
+                    <div className={ `${styles.sidebar_text}`} >fishes</div>
+                </div>
+            </Link>
             <Link to="/page2">
                 <div className={ `${styles.sidebar_item}` }>
                     <div className={ `${styles.sidebar_text}`} >page2</div>

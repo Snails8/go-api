@@ -13,6 +13,7 @@ import { ParentTabPage } from "./pages/Tabs/ParentTab";
 import { UserCreate } from "./pages/UserCreate/UserCreate";
 import { StatePage } from "./pages/StatePage/StatePage";
 import { FormPage } from "./pages/FormPage/FormPage";
+import { Fishes } from "./pages/Fishes/FishesPage";
 
 
 export const RouterConfig:React.VFC =() => {
@@ -22,6 +23,7 @@ export const RouterConfig:React.VFC =() => {
         <Routes>
           <Route index element={<Dashboard />} />
           <Route path="training" element={<Training />} />
+          <Route path="fishes" element={<Fishes />} />
           <Route path="page2" element={<SamplePage2 />} />
           <Route path="page3" element={<SamplePage3 Message="Hello Router" />} />
           <Route path="page4" element={<SamplePage4 />} >
