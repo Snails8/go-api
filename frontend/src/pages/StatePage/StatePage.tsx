@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BasePage } from "../../components/templates/BasePage/BasePage";
 
 export const StatePage:React.FC = ({
@@ -19,6 +19,10 @@ export const StatePage:React.FC = ({
         localStorage.setItem('reload', "")
     },[])
 
+    // ref検証
+    const [count, setCount] = useState(0);
+    const countRef = useRef(0);
+
     return (
         <>
         <BasePage>
@@ -29,6 +33,15 @@ export const StatePage:React.FC = ({
 
             <h3>遷移元のURLを取得する</h3>
             <span>{window.document.referrer}</span>
+
+            <h3>useRefとuseStateを検証する</h3>
+            <div>
+                <div>カウント（useState）: {count}</div>
+                <button onClick={() => setCount(count + 1)}>カウントアップ（useState）</button>
+
+                <div>カウント（useRef）: {countRef.current}</div>
+                <button onClick={() => countRef.current++}>カウントアップ（useRef）</button>
+            </div>
         </BasePage>
         </>
     )
