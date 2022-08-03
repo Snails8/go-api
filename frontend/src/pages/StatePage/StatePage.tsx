@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { BasePage } from "../../components/templates/BasePage/BasePage";
 import { useTestUseEffect } from "../../hooks/useTestUseEffect";
 
@@ -46,6 +47,9 @@ export const StatePage:React.FC = ({
                 <div>カウント（useRef）: {countRef.current}</div>
                 <button onClick={() => countRef.current++}>カウントアップ（useRef）</button>
             </div>
+
+            <h3>hooksによる状態保持の検証</h3>
+            <Link to="/states/use-context">useContext検証</Link>
         </BasePage>
         </>
     )
