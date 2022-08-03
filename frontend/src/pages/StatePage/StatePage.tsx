@@ -44,7 +44,13 @@ export const StatePage:React.FC = ({
         }
     },[])
 
-
+    // 副作用 -> クリーンアップ -> 副作用
+    useEffect(() => {
+        console.log('副作用', count)
+        return () => {
+            console.log('クリーンアップ', count);
+        };
+    }, [count]);
 
     return (
         <>
