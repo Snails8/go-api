@@ -23,6 +23,29 @@ export const StatePage:React.FC = ({
     const [count, setCount] = useState(0);
     const countRef = useRef(0);
 
+    // useEffect 検証 (初期render -> アンマウント -> 第二引数指定)
+    useEffect(() => {
+        console.log("第二引数[]: 初回時に発火する");
+    },[])
+
+    useEffect(() => {
+        console.log("第二引数指定: 初回・値変更時に発火する");
+    },[count])
+
+    useEffect(() => {
+        return () => {
+            console.log("クリーンアップ: 値変更時・アンマウント時に発火する");
+        }
+    },[count])
+
+    useEffect(() => {
+        return () => {
+            console.log("クリーンアップ: アンマウント時に発火する");
+        }
+    },[])
+
+
+
     return (
         <>
         <BasePage>
