@@ -31,5 +31,13 @@ export const useTestUseEffect = (
                 console.log('クリーンアップ', count);
             };
         }, [count]);
+
+        //  即時return
+        useEffect(() => {
+            console.log('即時return 前')
+
+            return 
+            console.log('後')
+        },[]);
     return    
 }
