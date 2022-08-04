@@ -1,9 +1,17 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { BasePage } from "../../components/templates/BasePage/BasePage";
 
 export const UserCount = createContext(100);
 
+export const UserUseStateCount = createContext({} as StateCountContext);
+type StateCountContext = {
+    stateCount: number,
+    setStateCount:  React.Dispatch<React.SetStateAction<number>>
+}
+
 export const UseContextPage:React.FC =() => {
+    // useState併用
+    const [stateCount, setStateCount] = useState(1);
 
     return (
         <>
@@ -13,6 +21,12 @@ export const UseContextPage:React.FC =() => {
             <UserCount.Provider value={100}>
                 <ComponentParent />
             </UserCount.Provider>
+
+            <h3>useStateを使用したパターン</h3>
+            {/* useState併用 */}
+            <UserUseStateCount.Provider value={{ stateCount, setStateCount }}>
+                <ComponentParent />
+            </UserUseStateCount.Provider>
         </BasePage>
         </>
     )
@@ -59,6 +73,7 @@ export const ComponentGreatGrandChild:React.FC = ({
 
 }) => {
     const count = useContext(UserCount);
+    const { stateCount, setStateCount } = useContext(UserUseStateCount);
 
     return (
         <div>
@@ -69,6 +84,10 @@ export const ComponentGreatGrandChild:React.FC = ({
                     return <p>親から受け取る値(方法2)：{count}</p>;
                 }}
             </UserCount.Consumer>
+
+            <p>useState併用パターン：{count}</p>
+            <button onClick={() => setStateCount(stateCount + 1)}>+</button>
+
         </div>
     )
 }
