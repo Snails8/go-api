@@ -50,6 +50,9 @@ export const StatePage:React.FC = ({
 
             <h3>hooksによる状態保持の検証</h3>
             <Link to="/states/use-context">useContext検証</Link>
+
+            <h3>hooksによる状態保持の検証</h3>
+            <Link to="/states/use-reducer">useReducer検証</Link>
         </BasePage>
         </>
     )

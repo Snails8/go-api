@@ -15,6 +15,7 @@ import { StatePage } from "./pages/StatePage/StatePage";
 import { FormPage } from "./pages/FormPage/FormPage";
 import { Fishes } from "./pages/Fishes/FishesPage";
 import { UseContextPage } from "./pages/UseContextPage/UseContextPage";
+import { UseReducerPage } from "./pages/UseReducerPage.tsx/UseReducerPage";
 
 
 export const RouterConfig:React.VFC =() => {
@@ -39,6 +40,7 @@ export const RouterConfig:React.VFC =() => {
           <Route path="form" element={<FormPage />} />
           <Route path="states" element={<StatePage />} />
           <Route path="states/use-context" element={<UseContextPage />} />
+          <Route path="states/use-reducer" element={<UseReducerPage />} />
           <Route path="parent-tab" element={<ParentTabPage />} />
           <Route path="child-tab" element={<ChildTabPage />} />  
         </Routes>
