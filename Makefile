@@ -3,15 +3,11 @@
 # ====================================================================
 up:
 	cd backend && \
-	make up && \
-	cd ../frontend && \
-	make up 
+	make up
 
 down:
 	cd backend && \
-	make down && \ 
-	cd ../frontend && \
-	make down
+	make down 
 
 restart:
 	cd backend && \
@@ -33,9 +29,6 @@ log:
 setup:
 	cd backend && \
 	make install && \
-	cd ../frontend && \
-	make install
-	make yarn
 	echo "########################################################"
 	echo "                     Enjoy Go Life                      "
 	echo "######################## finish ########################"
